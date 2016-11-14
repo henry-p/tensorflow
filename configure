@@ -1778,7 +1778,7 @@ if test -z "${TENSORFLOW_PYTHON_VERSION}"; then
   # use 3 if the default python binary aliases python3
   PYTHON_VERSION=`${USE_PYTHON} -c 'import sys; import platform; major, minor, patch = platform.python_version_tuple(); sys.stdout.write(major);'`
   if [ $PYTHON_VERSION == "3" ]; then
-    USE_PYTHON="${USE_PYTHON}3"
+    USE_PYTHON="${USE_PYTHON}"
   fi
 else
   echo "Using python version ${TENSORFLOW_PYTHON_VERSION}"
@@ -1786,7 +1786,8 @@ else
 fi
 
 # find python
-PYTHON_BIN=`which ${USE_PYTHON}`
+PYTHON_BIN="/usr/local/bin/python3"
+# PYTHON_BIN=`which ${USE_PYTHON}`
 if test -z "${PYTHON_BIN}"; then
   echo "Could not locate ${PYTHON_BIN}"
   exit 1
